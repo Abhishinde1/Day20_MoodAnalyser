@@ -26,17 +26,40 @@ namespace Mood_Analyser
             Console.WriteLine(actual);
         }
         [TestMethod]
-        [TestCategory("Null")]
-        public void GivenNullShouldReturnHappy()
+        [TestCategory("Empty Exception")]
+        public void GivenEmptyShouldReturnCustomException()
         {
-            string message = null;
-            UC1_MoodAnalyser mood = new UC1_MoodAnalyser(message);
-            string excepted = "happy";
-            var actual = mood.Mood();
-            Assert.AreEqual(excepted, actual);
-            Console.WriteLine(actual);
+            string expected = "Message  can not be Empty ";
+            try
+            {
+                string message = "";
+                UC1_MoodAnalyser mood = new UC1_MoodAnalyser(message);
+                string actual = mood.Mood();
+            }
+            catch (MoodAnalyzerException ex)
+            {
+                Console.WriteLine("Custom Exception: " + ex);
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
+        [TestMethod]
+        [TestCategory("Null Exception")]
 
+        public void GivenNullShouldReturnCustomException()
+        {
+            string expected = "Message  can not be Empty";
+            try
+            {
+                string message = null;
+                UC1_MoodAnalyser mood = new UC1_MoodAnalyser(message);
+                string actual = mood.Mood();
+            }
+            catch (MoodAnalyzerException ex)
+            {
+                Console.WriteLine("Custom Exception " + ex);
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
 
     }
 }

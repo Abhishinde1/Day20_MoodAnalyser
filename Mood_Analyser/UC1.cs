@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,6 @@ namespace Mood_Analyser
         {
             this.Message = message;
         }
-
         public string Mood()
         {
             try
@@ -22,17 +22,24 @@ namespace Mood_Analyser
                 {
                     return "happy";
                 }
+                else if (Message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_EXCEPTION, "Message cann't be Empty");
+
+                }
                 else
                 {
                     return "sad";
                 }
 
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
-                Console.WriteLine("parameter can not be Null");
-                return "happy";
+                Console.WriteLine("Default exception: " + ex.Message);
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_EXCEPTION, "Message cann't be null");
             }
         }
     }
+
 }
+
