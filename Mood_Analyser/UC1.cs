@@ -8,15 +8,30 @@ namespace Mood_Analyser
 {
     public class UC1_MoodAnalyser
     {
-        public string Mood(string message)
+        public string Message;
+        public UC1_MoodAnalyser(string message)
         {
-            if (message.ToLower().Contains("happy"))
+            this.Message = message;
+        }
+
+        public string Mood()
+        {
+            try
             {
-                return "happy";
+                if (Message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+                else
+                {
+                    return "sad";
+                }
+
             }
-            else
+            catch (NullReferenceException)
             {
-                return "sad";
+                Console.WriteLine("parameter can not be Null");
+                return "happy";
             }
         }
     }

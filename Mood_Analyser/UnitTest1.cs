@@ -4,28 +4,39 @@ namespace Mood_Analyser
     public class UnitTest1
     {
         [TestMethod]
-        [TestCategory("happy mood")]
+        [TestCategory("Happy mood")]
         public void TestMethod1()
         {
-            UC1_MoodAnalyser mood = new UC1_MoodAnalyser();
-            string message = "I am in happy mood";
+            UC1_MoodAnalyser mood = new UC1_MoodAnalyser("I am in happy mood");
+
             string expected = "happy";
-            var actual = mood.Mood(message);
+            var actual = mood.Mood();
             Assert.AreEqual(expected, actual);
             Console.WriteLine(actual);
         }
-
         [TestMethod]
         [TestCategory("sad mood")]
-
         public void TestMethod2()
         {
-            UC1_MoodAnalyser mood = new UC1_MoodAnalyser();
-            string message = "I am in sad mood";
+            UC1_MoodAnalyser mood = new UC1_MoodAnalyser("I am in sad mood");
+
             string expected = "sad";
-            var actual = mood.Mood(message);
+            var actual = mood.Mood();
             Assert.AreEqual(expected, actual);
             Console.WriteLine(actual);
         }
+        [TestMethod]
+        [TestCategory("Null")]
+        public void GivenNullShouldReturnHappy()
+        {
+            string message = null;
+            UC1_MoodAnalyser mood = new UC1_MoodAnalyser(message);
+            string excepted = "happy";
+            var actual = mood.Mood();
+            Assert.AreEqual(excepted, actual);
+            Console.WriteLine(actual);
+        }
+
+
     }
 }
