@@ -27,9 +27,9 @@ namespace Mood_Analyser
         }
         [TestMethod]
         [TestCategory("Empty Exception")]
-        public void GivenEmptyShouldReturnCustomException()
+        public void Method3()
         {
-            string expected = "Message  can not be Empty ";
+            string expected = "Message can not be Empty";
             try
             {
                 string message = "";
@@ -45,9 +45,9 @@ namespace Mood_Analyser
         [TestMethod]
         [TestCategory("Null Exception")]
 
-        public void GivenNullShouldReturnCustomException()
+        public void Method4()
         {
-            string expected = "Message  can not be Empty";
+            string expected = "Message can not be Null";
             try
             {
                 string message = null;

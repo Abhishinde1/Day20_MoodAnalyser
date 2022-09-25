@@ -24,7 +24,7 @@ namespace Mood_Analyser
                 }
                 else if (Message.Equals(string.Empty))
                 {
-                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_EXCEPTION, "Message cann't be Empty");
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_EXCEPTION, "Message can not be Empty");
 
                 }
                 else
@@ -36,7 +36,7 @@ namespace Mood_Analyser
             catch (NullReferenceException ex)
             {
                 Console.WriteLine("Default exception: " + ex.Message);
-                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_EXCEPTION, "Message cann't be null");
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_EXCEPTION, "Message can not be Null");
             }
         }
     }
